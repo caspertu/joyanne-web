@@ -28,7 +28,8 @@
 
 | Secret | 权限 | 用途 |
 |--------|------|------|
-| `CLOUDFLARE_API_TOKEN` | `Cloudflare Pages:Edit` | 部署到 Pages |
+| `CLOUDFLARE_API_KEY` | Global API Key | 部署到 Pages（wrangler） |
+| `CLOUDFLARE_EMAIL` | 账号邮箱 | 与 API Key 配对 |
 | `CLOUDFLARE_ACCOUNT_ID` | — | Cloudflare 账号 ID |
 | `IHAVENOIDEA_PAT` | 只读 `repo` | CI 拉取 `chapters/`（可选；无则用仓库内已同步章节） |
 

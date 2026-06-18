@@ -1,0 +1,25 @@
+---
+const links = [
+  { href: '/read', label: '阅读' },
+  { href: '/book', label: '书籍' },
+  { href: '/downloads', label: '下载' },
+  { href: '/about', label: '关于' },
+];
+---
+
+<header class="border-b border-accent-light/60 bg-paper/95">
+  <nav class="mx-auto flex max-w-3xl items-center justify-between px-4 py-3" aria-label="站点导航">
+    <a href="/" class="font-serif text-lg font-bold text-ink hover:text-accent">七公主</a>
+    <ul class="flex gap-4 text-sm">
+      {
+        links.map((l) => (
+          <li>
+            <a href={l.href} class="text-ink/70 hover:text-accent">
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>

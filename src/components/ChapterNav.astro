@@ -1,0 +1,49 @@
+---
+interface Props {
+  prevSlug: string | null;
+  nextSlug: string | null;
+  currentSlug: string;
+}
+
+const { prevSlug, nextSlug, currentSlug } = Astro.props;
+---
+
+<nav
+  class="reader-nav-bar sticky bottom-0 z-10 border-t border-accent-light/60 bg-paper/95 backdrop-blur-sm"
+  aria-label="章节导航"
+>
+  <div class="mx-auto grid max-w-3xl grid-cols-3 gap-2 px-4 py-3">
+    {
+      prevSlug ? (
+        <a
+          href={`/read/${prevSlug}`}
+          class="flex min-h-11 items-center justify-center rounded-lg bg-accent-light/50 px-2 text-sm text-ink hover:bg-accent-light"
+        >
+          ← 上一章
+        </a>
+      ) : (
+        <span class="flex min-h-11 items-center justify-center text-sm text-ink/30">← 上一章</span>
+      )
+    }
+    <a
+      href="/read"
+      class="flex min-h-11 items-center justify-center rounded-lg bg-accent/10 px-2 text-sm font-medium text-accent hover:bg-accent/20"
+    >
+      目录
+    </a>
+    {
+      nextSlug ? (
+        <a
+          href={`/read/${nextSlug}`}
+          class="flex min-h-11 items-center justify-center rounded-lg bg-accent-light/50 px-2 text-sm text-ink hover:bg-accent-light"
+          id="next-chapter"
+          data-slug={currentSlug}
+        >
+          下一章 →
+        </a>
+      ) : (
+        <span class="flex min-h-11 items-center justify-center text-sm text-ink/30">下一章 →</span>
+      )
+    }
+  </div>
+</nav>

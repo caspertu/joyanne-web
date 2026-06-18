@@ -1,0 +1,64 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  repository_dispatch:
+    types: [chapters-updated]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout joyanne-web
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Checkout ihavenoidea chapters
+        env:
+          IHAVENOIDEA_PAT: ${{ secrets.IHAVENOIDEA_PAT }}
+        run: |
+          if [ -n "$IHAVENOIDEA_PAT" ]; then
+            git clone --depth 1 --filter=blob:none --sparse \
+              "https://x-access-token:${IHAVENOIDEA_PAT}@github.com/${{ vars.IHAVENOIDEA_REPO || 'OWNER/ihavenoidea' }}.git" \
+              /tmp/ihavenoidea
+            cd /tmp/ihavenoidea
+            git sparse-checkout set chapters
+          else
+            echo "No PAT — using checked-in synced chapters"
+            mkdir -p /tmp/ihavenoidea
+            cp -r src/content/chapters /tmp/ihavenoidea/chapters 2>/dev/null || true
+          fi
+
+      - name: Sync content
+        run: |
+          if [ -d /tmp/ihavenoidea/chapters ]; then
+            node scripts/sync-chapters.mjs --source /tmp/ihavenoidea
+            node scripts/sync-downloads.mjs --source /tmp/ihavenoidea
+          else
+            echo "Skipping sync — no source chapters"
+            node scripts/sync-downloads.mjs --source /tmp/ihavenoidea 2>/dev/null || true
+          fi
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=joyanne-web

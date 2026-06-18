@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TableOfContents from '../../components/TableOfContents.astro';
+import { getPublishedChapters } from '../../lib/chapters';
+import site from '../../../content-meta/site.json';
+
+const chapters = await getPublishedChapters();
+---
+
+<BaseLayout title="章节目录" description={`${site.title} — 全部章节`}>
+  <div class="mx-auto max-w-2xl px-4 py-10">
+    <header class="mb-8">
+      <a href="/" class="text-sm text-accent hover:underline">← 首页</a>
+      <h1 class="mt-4 font-serif text-2xl font-bold">章节目录</h1>
+      <p class="mt-2 text-sm text-ink/50">共 {chapters.length} 章</p>
+    </header>
+
+    <TableOfContents chapters={chapters} />
+  </div>
+</BaseLayout>

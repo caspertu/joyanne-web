@@ -1,0 +1,90 @@
+---
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+---
+
+<div class="flex items-center gap-1 text-sm" role="group" aria-label="阅读设置">
+  <button
+    type="button"
+    id="font-decrease"
+    class="flex h-9 w-9 items-center justify-center rounded-md border border-accent-light text-ink hover:bg-accent-light/50"
+    aria-label="缩小字号"
+  >
+    A−
+  </button>
+  <button
+    type="button"
+    id="font-increase"
+    class="flex h-9 w-9 items-center justify-center rounded-md border border-accent-light text-ink hover:bg-accent-light/50"
+    aria-label="放大字号"
+  >
+    A+
+  </button>
+</div>
+
+<script define:vars={{ slug }}>
+  const FONT_KEY = 'joyanne:fontSize';
+  const READ_KEY = 'joyanne:read';
+  const PROGRESS_KEY = 'joyanne:progress';
+
+  function getFontSize() {
+    const v = Number(localStorage.getItem(FONT_KEY));
+    return v >= 16 && v <= 24 ? v : window.innerWidth >= 768 ? 20 : 18;
+  }
+
+  function applyFontSize(px) {
+    document.documentElement.style.setProperty('--reader-font-size', `${px}px`);
+    localStorage.setItem(FONT_KEY, String(px));
+  }
+
+  function saveProgress(ratio) {
+    try {
+      const data = JSON.parse(localStorage.getItem(PROGRESS_KEY) ?? '{}');
+      data[slug] = ratio;
+      localStorage.setItem(PROGRESS_KEY, JSON.stringify(data));
+    } catch {
+      localStorage.setItem(PROGRESS_KEY, JSON.stringify({ [slug]: ratio }));
+    }
+  }
+
+  function markRead() {
+    try {
+      const data = JSON.parse(localStorage.getItem(READ_KEY) ?? '{}');
+      data[slug] = true;
+      localStorage.setItem(READ_KEY, JSON.stringify(data));
+    } catch {
+      localStorage.setItem(READ_KEY, JSON.stringify({ [slug]: true }));
+    }
+  }
+
+  applyFontSize(getFontSize());
+
+  document.getElementById('font-decrease')?.addEventListener('click', () => {
+    applyFontSize(Math.max(16, getFontSize() - 1));
+  });
+  document.getElementById('font-increase')?.addEventListener('click', () => {
+    applyFontSize(Math.min(24, getFontSize() + 1));
+  });
+
+  let ticking = false;
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const ratio = max > 0 ? window.scrollY / max : 1;
+        saveProgress(ratio);
+        if (ratio >= 0.9) markRead();
+        ticking = false;
+      });
+    },
+    { passive: true },
+  );
+
+  document.getElementById('next-chapter')?.addEventListener('click', () => markRead());
+</script>

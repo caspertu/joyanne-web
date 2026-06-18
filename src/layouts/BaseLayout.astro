@@ -1,0 +1,36 @@
+---
+import '../styles/global.css';
+import ShareMeta from '../components/ShareMeta.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  path?: string;
+  showNav?: boolean;
+  ogType?: 'website' | 'article';
+}
+
+const {
+  title,
+  description = '七公主的发疯日常 — 爸爸写给女儿的古装穿越爽文',
+  path = Astro.url.pathname,
+  showNav = true,
+  ogType = 'website',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="alternate" type="application/rss+xml" title="七公主的发疯日常" href="/rss.xml" />
+    <ShareMeta title={title} description={description} path={path} type={ogType} />
+  </head>
+  <body class="min-h-screen bg-paper text-ink antialiased">
+    {showNav && <SiteHeader />}
+    <slot />
+  </body>
+</html>

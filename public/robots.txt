@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /read/
+Disallow:
+
+Sitemap: https://joyanne.online/sitemap.xml

@@ -1,0 +1,83 @@
+---
+import type { ChapterEntry } from '../lib/chapters';
+import { chapterSlug, formatChapterLabel, groupChaptersByNumber } from '../lib/chapters';
+
+interface Props {
+  chapters: ChapterEntry[];
+}
+
+const { chapters } = Astro.props;
+const grouped = groupChaptersByNumber(chapters);
+const numbers = [...grouped.keys()].sort((a, b) => a - b);
+---
+
+<nav aria-label="章节目录">
+  <ol class="space-y-2">
+    {
+      numbers.map((num) => {
+        const parts = grouped.get(num)!;
+        if (parts.length === 1) {
+          const ch = parts[0];
+          return (
+            <li>
+              <a
+                href={`/read/${chapterSlug(ch)}`}
+                class="group flex items-baseline justify-between rounded-lg border border-transparent px-4 py-3 hover:border-accent-light hover:bg-accent-light/30"
+                data-chapter-slug={chapterSlug(ch)}
+              >
+                <span class="font-serif text-ink group-hover:text-accent">
+                  {formatChapterLabel(ch)}
+                </span>
+                <span class="ml-3 shrink-0 text-xs text-ink/50">
+                  {ch.data.wordCount.toLocaleString()} 字
+                </span>
+              </a>
+            </li>
+          );
+        }
+        return (
+          <li class="rounded-lg border border-accent-light/40 px-4 py-3">
+            <p class="mb-2 font-serif font-medium text-ink">第{num}章 {parts[0].data.title}</p>
+            <ul class="space-y-1 pl-4">
+              {parts.map((ch) => (
+                <li>
+                  <a
+                    href={`/read/${chapterSlug(ch)}`}
+                    class="text-sm text-accent hover:underline"
+                    data-chapter-slug={chapterSlug(ch)}
+                  >
+                    {ch.data.part === 'a' ? '（上）' : '（下）'} · {ch.data.wordCount.toLocaleString()} 字
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </li>
+        );
+      })
+    }
+  </ol>
+</nav>
+
+<script>
+  const READ_KEY = 'joyanne:read';
+
+  function applyReadMarks() {
+    let readSet = {};
+    try {
+      readSet = JSON.parse(localStorage.getItem(READ_KEY) ?? '{}');
+    } catch {
+      return;
+    }
+    document.querySelectorAll('[data-chapter-slug]').forEach((el) => {
+      const slug = el.getAttribute('data-chapter-slug');
+      if (slug && readSet[slug]) {
+        const badge = document.createElement('span');
+        badge.className = 'ml-2 text-xs text-accent';
+        badge.textContent = '已读';
+        el.appendChild(badge);
+      }
+    });
+  }
+
+  applyReadMarks();
+</script>

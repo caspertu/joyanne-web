@@ -1,0 +1,45 @@
+---
+import { getCollection, render } from 'astro:content';
+import ReaderLayout from '../../layouts/ReaderLayout.astro';
+import {
+  getPublishedChapters,
+  getNavSlugs,
+  formatChapterLabel,
+  chapterSlug,
+} from '../../lib/chapters';
+
+export async function getStaticPaths() {
+  const all = await getCollection('chapters');
+  const published = all.filter((c) => c.data.status === 'published');
+  return published.map((entry) => ({
+    params: { slug: chapterSlug(entry) },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const chapters = await getPublishedChapters();
+const slug = chapterSlug(entry);
+const { prevSlug, nextSlug } = getNavSlugs(chapters, slug);
+const chapterLabel = formatChapterLabel(entry);
+
+const bodyText = entry.body
+  .replace(/---/g, '')
+  .replace(/——\s*第.+章\s*完\s*——/g, '')
+  .replace(/\s+/g, '');
+const description = bodyText.slice(0, 120);
+---
+
+<ReaderLayout
+  title={chapterLabel}
+  chapterLabel={chapterLabel}
+  slug={slug}
+  prevSlug={prevSlug}
+  nextSlug={nextSlug}
+  description={description}
+  ogType="article"
+>
+  <Content />
+</ReaderLayout>

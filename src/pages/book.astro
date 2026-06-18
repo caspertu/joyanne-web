@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getPublishedChapters } from '../lib/chapters';
+import site from '../../content-meta/site.json';
+import synopsis from '../../content-meta/synopsis.md?raw';
+
+const chapters = await getPublishedChapters();
+const totalWords = chapters.reduce((sum, c) => sum + c.data.wordCount, 0);
+const progress = Math.round((chapters.length / site.targetChapters) * 100);
+---
+
+<BaseLayout title="书籍介绍" description={site.hook} path="/book">
+  <div class="mx-auto max-w-2xl px-4 py-10">
+    <h1 class="mb-2 font-serif text-3xl font-bold">{site.title}</h1>
+    <p class="mb-8 text-ink/60">{site.subtitle}</p>
+
+    <section class="mb-10 rounded-2xl border border-accent-light bg-white/50 p-6">
+      <h2 class="mb-3 font-serif text-lg font-bold">连载进度</h2>
+      <div class="mb-2 h-3 overflow-hidden rounded-full bg-accent-light">
+        <div class="h-full rounded-full bg-accent transition-all" style={`width: ${progress}%`} />
+      </div>
+      <p class="text-sm text-ink/70">
+        已更新 <strong>{chapters.length}</strong> / {site.targetChapters} 章 · 共{' '}
+        <strong>{totalWords.toLocaleString()}</strong> 字
+      </p>
+    </section>
+
+    <section class="prose prose-stone mb-10 max-w-none font-serif leading-relaxed">
+      <h2 class="font-serif text-lg font-bold">简介</h2>
+      <div class="whitespace-pre-line text-ink/80">{synopsis.replace(/^# .+\n\n/, '')}</div>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="mb-4 font-serif text-lg font-bold">主角三人组</h2>
+      <div class="grid gap-4 sm:grid-cols-3">
+        <div class="rounded-xl border border-accent-light p-4">
+          <p class="mb-1 text-2xl">🌸</p>
+          <p class="font-bold">林婉儿 / 七公主宁璃</p>
+          <p class="mt-1 text-sm text-ink/60">穿越社畜 · 精神海金手指 · 广播体操 +1 体质</p>
+        </div>
+        <div class="rounded-xl border border-accent-light p-4">
+          <p class="mb-1 text-2xl">🌿</p>
+          <p class="font-bold">三皇女宁安</p>
+          <p class="mt-1 text-sm text-ink/60">病弱白莲花外表 · 医学生穿越者 · 袖里藏毒</p>
+        </div>
+        <div class="rounded-xl border border-accent-light p-4">
+          <p class="mb-1 text-2xl">🐺</p>
+          <p class="font-bold">小竹 / 前·夜枭</p>
+          <p class="mt-1 text-sm text-ink/60">暗卫之王归降 · 现职陪练傻小狗 · 胸前粉色绢花</p>
+        </div>
+      </div>
+    </section>
+
+    <a
+      href="/read/chapter-01"
+      class="inline-flex min-h-12 items-center justify-center rounded-xl bg-accent px-8 text-white hover:bg-accent/90"
+    >
+      开始阅读第一章
+    </a>
+  </div>
+</BaseLayout>

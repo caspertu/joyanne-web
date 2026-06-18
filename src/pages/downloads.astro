@@ -1,0 +1,58 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const downloadsDir = path.join(process.cwd(), 'public/downloads');
+let files: { name: string; size: string; href: string }[] = [];
+
+if (fs.existsSync(downloadsDir)) {
+  files = fs
+    .readdirSync(downloadsDir)
+    .filter((f) => !f.startsWith('.'))
+    .map((f) => {
+      const stat = fs.statSync(path.join(downloadsDir, f));
+      return {
+        name: f,
+        size: stat.size > 1024 * 1024
+          ? `${(stat.size / 1024 / 1024).toFixed(1)} MB`
+          : `${(stat.size / 1024).toFixed(0)} KB`,
+        href: `/downloads/${f}`,
+      };
+    });
+}
+---
+
+<BaseLayout title="下载" description="下载《七公主的发疯日常》EPUB 电子书" path="/downloads">
+  <div class="mx-auto max-w-2xl px-4 py-10">
+    <h1 class="mb-2 font-serif text-2xl font-bold">下载</h1>
+    <p class="mb-8 text-ink/60">离线阅读 · 可导入微信读书 / Apple Books</p>
+
+    {
+      files.length > 0 ? (
+        <ul class="space-y-3">
+          {files.map((f) => (
+            <li>
+              <a
+                href={f.href}
+                download
+                class="flex items-center justify-between rounded-xl border border-accent-light px-5 py-4 hover:bg-accent-light/30"
+              >
+                <span class="font-medium">{f.name}</span>
+                <span class="text-sm text-ink/50">{f.size}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="rounded-xl border border-accent-light bg-white/50 p-6 text-ink/60">
+          下载文件准备中。全本 EPUB 会在作者本机导出后自动同步上线。
+        </p>
+      )
+    }
+
+    <p class="mt-8 text-sm text-ink/40">
+      分章 PDF 将在 v1.1 追加。目前建议在线阅读或下载 EPUB。
+    </p>
+  </div>
+</BaseLayout>

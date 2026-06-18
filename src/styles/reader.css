@@ -1,0 +1,51 @@
+.reader-body {
+  font-family: var(--font-serif);
+  font-size: var(--reader-font-size, 18px);
+  line-height: 1.9;
+  color: var(--color-ink);
+}
+
+@media (min-width: 768px) {
+  .reader-body {
+    line-height: 2;
+    font-size: var(--reader-font-size, 20px);
+  }
+}
+
+.reader-body p {
+  text-indent: 2em;
+  margin-bottom: 0.75em;
+}
+
+.reader-body hr,
+.reader-body .scene-break {
+  border: none;
+  text-align: center;
+  margin: 2em 0;
+  height: auto;
+  overflow: visible;
+}
+
+.reader-body hr::before,
+.reader-body .scene-break::before {
+  content: "·  ·  ·";
+  color: #b8a88a;
+  letter-spacing: 0.5em;
+  font-size: 0.85em;
+}
+
+.reader-body blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1em;
+  margin: 1em 0;
+  color: #5a4a3a;
+  text-indent: 0;
+}
+
+.reader-body strong {
+  font-weight: 700;
+}
+
+.reader-nav-bar {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}

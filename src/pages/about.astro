@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../../content-meta/site.json';
+---
+
+<BaseLayout title="关于我们" description="爸爸写给 Joyanne 的故事" path="/about">
+  <div class="mx-auto max-w-2xl px-4 py-10">
+    <div class="mb-8 text-center">
+      <div
+        class="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full bg-accent-light text-5xl"
+        aria-hidden="true"
+      >
+        👸
+      </div>
+      <h1 class="font-serif text-2xl font-bold">写给 Joyanne 的故事</h1>
+      <p class="mt-2 text-ink/60">插画头像 · 不出真实照片</p>
+    </div>
+
+    <div class="space-y-4 font-serif leading-relaxed text-ink/80">
+      <p>
+        这是爸爸给 12 岁女儿写的一本古装穿越爽文。主角林婉儿跟你差不多大——好吧，穿越之后是
+        12 岁——但她脑子里装着一个被甲方折磨了十几年的打工人灵魂，所以发疯起来特别有意思。
+      </p>
+      <p>
+        书里有小动物、有广播体操、有辣条、有金銮殿大审判，也有「我这命起码值五千两」这种嘴硬名场面。幽默优先，读起来应该会比写作业开心一点。
+      </p>
+      <p>
+        目前连载到第十章，目标是写满一百章。新章写完会自动同步到这个网站——你可以随时回来看七公主又搞了什么新花样。
+      </p>
+      <p class="text-sm text-ink/50">
+        This is a family passion project — a humorous Chinese web novel written by Dad for Joyanne.
+      </p>
+    </div>
+
+    <div class="mt-10 flex flex-wrap gap-3">
+      <a href="/read" class="rounded-xl bg-accent px-6 py-3 text-white hover:bg-accent/90">开始阅读</a>
+      <a href="/book" class="rounded-xl border border-accent/30 px-6 py-3 text-accent hover:bg-accent/5">
+        书籍介绍
+      </a>
+    </div>
+  </div>
+</BaseLayout>

@@ -2,4 +2,4 @@ User-agent: *
 Allow: /read/
 Disallow:
 
-Sitemap: https://joyanne.online/sitemap.xml
+Sitemap: https://www.joyanna.online/sitemap.xml

@@ -7,7 +7,7 @@ interface Props {
 }
 
 const { title, description, path = '/', type = 'website' } = Astro.props;
-const site = Astro.site?.href ?? 'https://joyanne.online';
+const site = Astro.site?.href ?? 'https://www.joyanna.online';
 const url = new URL(path, site).href;
 const fullTitle = title.includes('七公主') ? title : `${title} | 七公主的发疯日常`;
 const ogImage = new URL('/images/cover.svg', site).href;

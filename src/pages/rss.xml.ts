@@ -4,7 +4,7 @@ import site from '../../content-meta/site.json';
 
 export const GET: APIRoute = async (context) => {
   const chapters = await getPublishedChapters();
-  const siteUrl = context.site?.href ?? 'https://joyanne.online';
+  const siteUrl = context.site?.href ?? 'https://www.joyanna.online';
 
   const items = chapters
     .slice()

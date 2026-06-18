@@ -32,11 +32,9 @@ jobs:
           IHAVENOIDEA_PAT: ${{ secrets.IHAVENOIDEA_PAT }}
         run: |
           if [ -n "$IHAVENOIDEA_PAT" ]; then
-            git clone --depth 1 --filter=blob:none --sparse \
+            git clone --depth 1 \
               "https://x-access-token:${IHAVENOIDEA_PAT}@github.com/${{ vars.IHAVENOIDEA_REPO || 'caspertu/ihavenoidea' }}.git" \
               /tmp/ihavenoidea
-            cd /tmp/ihavenoidea
-            git sparse-checkout set chapters
           else
             echo "No PAT — using checked-in synced chapters"
             mkdir -p /tmp/ihavenoidea
@@ -57,8 +55,13 @@ jobs:
         run: npm run build
 
       - name: Deploy to Cloudflare Pages
+        if: ${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ACCOUNT_ID != '' }}
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=joyanne-web
+
+      - name: Skip deploy (no Cloudflare secrets)
+        if: ${{ secrets.CLOUDFLARE_API_TOKEN == '' || secrets.CLOUDFLARE_ACCOUNT_ID == '' }}
+        run: echo "Build OK — add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID to deploy."

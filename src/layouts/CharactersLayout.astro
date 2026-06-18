@@ -1,0 +1,33 @@
+---
+import ShareMeta from '../components/ShareMeta.astro';
+import '../styles/characters.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = '角色图鉴',
+  description = '听竹轩人力资源部 · 全员花名册 —《七公主的发疯日常》',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <ShareMeta title={title} description={description} path="/characters" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

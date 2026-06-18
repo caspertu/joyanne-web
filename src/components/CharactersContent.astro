@@ -1,0 +1,534 @@
+---
+---
+<!-- ══════════════════ Navigation ══════════════════ -->
+<nav class="nav" data-od-id="nav" data-component="nav">
+  <a href="/" class="nav-brand">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4C4 2.9 4.9 2 6 2h8l6 6v12c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V4zm8 1.5V8h2.5L12 5.5zM8 12h8v1.5H8V12zm0 3h8v1.5H8V15zm0 3h5v1.5H8V18z"/></svg>
+    七公主
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">首页</a></li>
+    <li><a href="/read">章节目录</a></li>
+    <li><a href="/characters" class="active">角色介绍</a></li>
+  </ul>
+  <a href="/read/chapter-01" class="nav-cta">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    开始阅读
+  </a>
+  <button class="nav-hamburger" aria-label="打开菜单" id="hamburgerBtn">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="/" onclick="closeMobileNav()">首页</a>
+  <a href="/read" onclick="closeMobileNav()">章节目录</a>
+  <a href="/characters" onclick="closeMobileNav()">角色介绍</a>
+  <a href="/read/chapter-01" class="nav-cta" onclick="closeMobileNav()">开始阅读</a>
+</div>
+
+<!-- ══════════════════ Hero ══════════════════ -->
+<main>
+<section class="hero" data-od-id="hero" data-component="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-flowers" id="heroFlowers"></div>
+  <div class="hero-content fade-up">
+    <h1>角色<span>图鉴</span></h1>
+    <p class="hero-sub">听竹轩人力资源部 · 全员花名册</p>
+    <div class="hero-line"></div>
+  </div>
+</section>
+
+<!-- ══════════════════ Protagonist Faction ══════════════════ -->
+<section class="section" id="protagonists" data-od-id="protagonists" data-component="protagonist-faction">
+  <div class="section-header fade-up">
+    <p class="section-sub">主角阵营</p>
+    <h2>听竹轩招聘部</h2>
+    <div class="section-line" style="background: var(--seed-primary);"></div>
+  </div>
+
+  <div class="card-grid">
+    <!-- Card 1: Lin Wan'er -->
+    <div class="char-card" style="--card-accent: #FFD700;" data-delay="0">
+      <div class="card-avatar" style="background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,165,0,0.1));">
+        <span class="card-avatar-letter">婉</span>
+      </div>
+      <div class="card-name">林婉儿 / 七公主宁璃</div>
+      <div class="card-title">HR部门CEO</div>
+      <p class="card-desc">35岁现代打工人灵魂，12岁公主身体。招牌动作：拍桌子、搓下巴、翻白眼。</p>
+      <div class="card-flowers">
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal" cx="12" cy="7" r="4"/><circle class="petal" cx="7" cy="12" r="4"/><circle class="petal" cx="17" cy="12" r="4"/><circle class="petal" cx="9" cy="17" r="4"/><circle class="petal" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="#FFD700"/></svg></span>
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal" cx="12" cy="7" r="4"/><circle class="petal" cx="7" cy="12" r="4"/><circle class="petal" cx="17" cy="12" r="4"/><circle class="petal" cx="9" cy="17" r="4"/><circle class="petal" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="#FFD700"/></svg></span>
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal" cx="12" cy="7" r="4"/><circle class="petal" cx="7" cy="12" r="4"/><circle class="petal" cx="17" cy="12" r="4"/><circle class="petal" cx="9" cy="17" r="4"/><circle class="petal" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="#FFD700"/></svg></span>
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal" cx="12" cy="7" r="4"/><circle class="petal" cx="7" cy="12" r="4"/><circle class="petal" cx="17" cy="12" r="4"/><circle class="petal" cx="9" cy="17" r="4"/><circle class="petal" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="#FFD700"/></svg></span>
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal" cx="12" cy="7" r="4"/><circle class="petal" cx="7" cy="12" r="4"/><circle class="petal" cx="17" cy="12" r="4"/><circle class="petal" cx="9" cy="17" r="4"/><circle class="petal" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="#FFD700"/></svg></span>
+      </div>
+      <div class="card-quote">
+        <div class="quote-bubble">"本宫不发疯，谁发疯？"</div>
+      </div>
+    </div>
+
+    <!-- Card 2: Ning An -->
+    <div class="char-card" style="--card-accent: #00D4FF;" data-delay="80">
+      <div class="card-avatar" style="background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(0,150,200,0.1));">
+        <span class="card-avatar-letter">安</span>
+      </div>
+      <div class="card-name">三公主宁安</div>
+      <div class="card-title" style="color: #00D4FF;">医学生穿越者</div>
+      <p class="card-desc">穿越三年，外表病弱美人，内心狠辣果断。随身带着七步散。</p>
+      <div class="card-flowers">
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal" cx="12" cy="7" r="4"/><circle class="petal" cx="7" cy="12" r="4"/><circle class="petal" cx="17" cy="12" r="4"/><circle class="petal" cx="9" cy="17" r="4"/><circle class="petal" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="#FFD700"/></svg></span>
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal" cx="12" cy="7" r="4"/><circle class="petal" cx="7" cy="12" r="4"/><circle class="petal" cx="17" cy="12" r="4"/><circle class="petal" cx="9" cy="17" r="4"/><circle class="petal" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="#FFD700"/></svg></span>
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal" cx="12" cy="7" r="4"/><circle class="petal" cx="7" cy="12" r="4"/><circle class="petal" cx="17" cy="12" r="4"/><circle class="petal" cx="9" cy="17" r="4"/><circle class="petal" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="#FFD700"/></svg></span>
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal" cx="12" cy="7" r="4"/><circle class="petal" cx="7" cy="12" r="4"/><circle class="petal" cx="17" cy="12" r="4"/><circle class="petal" cx="9" cy="17" r="4"/><circle class="petal" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="#FFD700"/></svg></span>
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal-empty" cx="12" cy="7" r="4"/><circle class="petal-empty" cx="7" cy="12" r="4"/><circle class="petal-empty" cx="17" cy="12" r="4"/><circle class="petal-empty" cx="9" cy="17" r="4"/><circle class="petal-empty" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="rgba(255,68,68,0.15)"/></svg></span>
+      </div>
+      <div class="card-quote">
+        <div class="quote-bubble">"三姐姐这辣条...啊不，这药，多少钱一包？"</div>
+      </div>
+    </div>
+
+    <!-- Card 3: Xiao Zhu -->
+    <div class="char-card" style="--card-accent: #7E4FC9;" data-delay="160">
+      <div class="card-avatar" style="background: linear-gradient(135deg, rgba(168,85,247,0.2), rgba(120,50,200,0.1));">
+        <span class="card-avatar-letter">竹</span>
+      </div>
+      <div class="card-name">小竹 (原夜枭)</div>
+      <div class="card-title" style="color: #7E4FC9;">前刺客统领·现广播体操领操员</div>
+      <p class="card-desc">22岁，沉默寡言，金穗刀换成了小红花。叫婉儿"姐"。</p>
+      <div class="card-flowers">
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal" cx="12" cy="7" r="4"/><circle class="petal" cx="7" cy="12" r="4"/><circle class="petal" cx="17" cy="12" r="4"/><circle class="petal" cx="9" cy="17" r="4"/><circle class="petal" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="#FFD700"/></svg></span>
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal" cx="12" cy="7" r="4"/><circle class="petal" cx="7" cy="12" r="4"/><circle class="petal" cx="17" cy="12" r="4"/><circle class="petal" cx="9" cy="17" r="4"/><circle class="petal" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="#FFD700"/></svg></span>
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal" cx="12" cy="7" r="4"/><circle class="petal" cx="7" cy="12" r="4"/><circle class="petal" cx="17" cy="12" r="4"/><circle class="petal" cx="9" cy="17" r="4"/><circle class="petal" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="#FFD700"/></svg></span>
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal-empty" cx="12" cy="7" r="4"/><circle class="petal-empty" cx="7" cy="12" r="4"/><circle class="petal-empty" cx="17" cy="12" r="4"/><circle class="petal-empty" cx="9" cy="17" r="4"/><circle class="petal-empty" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="rgba(255,68,68,0.15)"/></svg></span>
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal-empty" cx="12" cy="7" r="4"/><circle class="petal-empty" cx="7" cy="12" r="4"/><circle class="petal-empty" cx="17" cy="12" r="4"/><circle class="petal-empty" cx="9" cy="17" r="4"/><circle class="petal-empty" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="rgba(255,68,68,0.15)"/></svg></span>
+      </div>
+      <div class="card-quote">
+        <div class="quote-bubble">"......（点头）"</div>
+      </div>
+    </div>
+
+    <!-- Card 4: Xiao Man -->
+    <div class="char-card" style="--card-accent: #FF6B9D;" data-delay="240">
+      <div class="card-avatar" style="background: linear-gradient(135deg, rgba(255,107,157,0.2), rgba(200,80,120,0.1));">
+        <span class="card-avatar-letter">满</span>
+      </div>
+      <div class="card-name">小满</div>
+      <div class="card-title" style="color: #FF6B9D;">HR副部长见习生</div>
+      <p class="card-desc">12岁，小竹的师妹。戴三层小红花，气场强大。</p>
+      <div class="card-flowers">
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal" cx="12" cy="7" r="4"/><circle class="petal" cx="7" cy="12" r="4"/><circle class="petal" cx="17" cy="12" r="4"/><circle class="petal" cx="9" cy="17" r="4"/><circle class="petal" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="#FFD700"/></svg></span>
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal" cx="12" cy="7" r="4"/><circle class="petal" cx="7" cy="12" r="4"/><circle class="petal" cx="17" cy="12" r="4"/><circle class="petal" cx="9" cy="17" r="4"/><circle class="petal" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="#FFD700"/></svg></span>
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal-empty" cx="12" cy="7" r="4"/><circle class="petal-empty" cx="7" cy="12" r="4"/><circle class="petal-empty" cx="17" cy="12" r="4"/><circle class="petal-empty" cx="9" cy="17" r="4"/><circle class="petal-empty" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="rgba(255,68,68,0.15)"/></svg></span>
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal-empty" cx="12" cy="7" r="4"/><circle class="petal-empty" cx="7" cy="12" r="4"/><circle class="petal-empty" cx="17" cy="12" r="4"/><circle class="petal-empty" cx="9" cy="17" r="4"/><circle class="petal-empty" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="rgba(255,68,68,0.15)"/></svg></span>
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal-empty" cx="12" cy="7" r="4"/><circle class="petal-empty" cx="7" cy="12" r="4"/><circle class="petal-empty" cx="17" cy="12" r="4"/><circle class="petal-empty" cx="9" cy="17" r="4"/><circle class="petal-empty" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="rgba(255,68,68,0.15)"/></svg></span>
+      </div>
+      <div class="card-quote">
+        <div class="quote-bubble">"姐，我觉得这个年终总结写得不够狠。"</div>
+      </div>
+    </div>
+
+    <!-- Card 5: Crown Prince -->
+    <div class="char-card" style="--card-accent: #F59E0B;" data-delay="320">
+      <div class="card-avatar" style="background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(200,130,10,0.1));">
+        <span class="card-avatar-letter">太</span>
+      </div>
+      <div class="card-name">太子</div>
+      <div class="card-title" style="color: #F59E0B;">被救回的大皇兄</div>
+      <p class="card-desc">刚被大皇子绑架救出，穿着大了三号的骑装恢复中。开始怀疑婉儿的真实身份。</p>
+      <div class="card-flowers">
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal" cx="12" cy="7" r="4"/><circle class="petal" cx="7" cy="12" r="4"/><circle class="petal" cx="17" cy="12" r="4"/><circle class="petal" cx="9" cy="17" r="4"/><circle class="petal" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="#FFD700"/></svg></span>
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal" cx="12" cy="7" r="4"/><circle class="petal" cx="7" cy="12" r="4"/><circle class="petal" cx="17" cy="12" r="4"/><circle class="petal" cx="9" cy="17" r="4"/><circle class="petal" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="#FFD700"/></svg></span>
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal" cx="12" cy="7" r="4"/><circle class="petal" cx="7" cy="12" r="4"/><circle class="petal" cx="17" cy="12" r="4"/><circle class="petal" cx="9" cy="17" r="4"/><circle class="petal" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="#FFD700"/></svg></span>
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal-empty" cx="12" cy="7" r="4"/><circle class="petal-empty" cx="7" cy="12" r="4"/><circle class="petal-empty" cx="17" cy="12" r="4"/><circle class="petal-empty" cx="9" cy="17" r="4"/><circle class="petal-empty" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="rgba(255,68,68,0.15)"/></svg></span>
+        <span class="card-flower"><svg viewBox="0 0 24 24"><circle class="petal-empty" cx="12" cy="7" r="4"/><circle class="petal-empty" cx="7" cy="12" r="4"/><circle class="petal-empty" cx="17" cy="12" r="4"/><circle class="petal-empty" cx="9" cy="17" r="4"/><circle class="petal-empty" cx="15" cy="17" r="4"/><circle cx="12" cy="12" r="3" fill="rgba(255,68,68,0.15)"/></svg></span>
+      </div>
+      <div class="card-quote">
+        <div class="quote-bubble">"七妹...你到底是谁？"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ Animal Squad ══════════════════ -->
+<div class="animal-section-bg">
+<section class="section" id="animals" data-od-id="animals" data-component="animal-squad">
+  <div class="section-header fade-up">
+    <p class="section-sub">动物小队</p>
+    <h2>精神海招聘部</h2>
+    <div class="section-line" style="background: var(--seed-spiritual);"></div>
+  </div>
+
+  <div class="animal-grid">
+    <!-- Cat: Dou Dou -->
+    <div class="animal-card" style="--card-accent: #FF8C00;" data-delay="0">
+      <div class="animal-icon-wrap" style="background: linear-gradient(135deg, rgba(255,140,0,0.2), rgba(200,100,0,0.1));">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 16L8 4L20 12H44L56 4L52 16C54 20 56 26 56 32C56 44 46 56 32 58C18 56 8 44 8 32C8 26 10 20 12 16Z" fill="#FF8C00"/>
+          <ellipse cx="24" cy="30" rx="3" ry="4" fill="#0A0A12"/>
+          <ellipse cx="40" cy="30" rx="3" ry="4" fill="#0A0A12"/>
+          <ellipse cx="32" cy="38" rx="3" ry="2" fill="#FFB6C1"/>
+          <path d="M28 42Q32 46 36 42" stroke="#0A0A12" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <line x1="10" y1="30" x2="22" y2="32" stroke="#0A0A12" stroke-width="1" opacity="0.4"/>
+          <line x1="10" y1="34" x2="22" y2="34" stroke="#0A0A12" stroke-width="1" opacity="0.4"/>
+          <line x1="42" y1="32" x2="54" y2="30" stroke="#0A0A12" stroke-width="1" opacity="0.4"/>
+          <line x1="42" y1="34" x2="54" y2="34" stroke="#0A0A12" stroke-width="1" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="animal-info">
+        <div class="animal-name">豆豆</div>
+        <div class="animal-species">黄猫 · 屋顶情报员</div>
+        <p class="animal-desc">毒舌担当，吐槽功力天下第一。名言涉及尿桶等不雅回忆。</p>
+        <div class="animal-quote" style="border-color: #FF8C00;">"上次本喵掉进尿桶的时候..."</div>
+      </div>
+    </div>
+
+    <!-- Crow: A Hei -->
+    <div class="animal-card" style="--card-accent: #4A4A5A;" data-delay="100">
+      <div class="animal-icon-wrap" style="background: linear-gradient(135deg, rgba(74,74,90,0.3), rgba(50,50,60,0.15));">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 28C8 28 4 22 10 18C16 14 22 18 22 18L28 14C28 14 24 8 30 6C36 4 38 10 38 10L42 14C42 14 48 12 52 16C56 20 52 26 52 26L48 30C48 30 54 34 52 40C50 46 44 44 44 44L38 40L32 44L26 40L20 44C20 44 14 46 12 40C10 34 16 30 16 30L8 28Z" fill="#4A4A5A"/>
+          <circle cx="26" cy="24" r="3" fill="#F5F0E8"/>
+          <circle cx="26" cy="24" r="1.5" fill="#0A0A12"/>
+          <path d="M36 26L42 24L36 28Z" fill="#FFD700"/>
+          <path d="M18 48L22 44L20 52Z" fill="#4A4A5A"/>
+          <path d="M44 48L40 44L42 52Z" fill="#4A4A5A"/>
+        </svg>
+      </div>
+      <div class="animal-info">
+        <div class="animal-name">阿黑</div>
+        <div class="animal-species">乌鸦 · 空中侦察兵</div>
+        <p class="animal-desc">负责空中侦察和传信，沉默高效。</p>
+        <div class="animal-quote" style="border-color: #4A4A5A;">"......（振翅）"</div>
+      </div>
+    </div>
+
+    <!-- Fish: Pang Ju -->
+    <div class="animal-card" style="--card-accent: #FF6347;" data-delay="200">
+      <div class="animal-icon-wrap" style="background: linear-gradient(135deg, rgba(255,99,71,0.2), rgba(200,60,40,0.1));">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="30" cy="32" rx="20" ry="14" fill="#FF6347"/>
+          <path d="M48 32C48 32 58 22 58 32C58 42 48 32 48 32Z" fill="#FF6347"/>
+          <path d="M48 32C48 32 58 22 58 32C58 42 48 32 48 32Z" fill="rgba(0,0,0,0.15)"/>
+          <ellipse cx="20" cy="28" rx="2.5" ry="3" fill="#0A0A12"/>
+          <ellipse cx="20" cy="28" rx="1" ry="1.5" fill="#F5F0E8"/>
+          <path d="M28 20Q34 16 40 20" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" fill="none"/>
+          <path d="M28 44Q34 48 40 44" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" fill="none"/>
+          <path d="M14 36Q18 38 22 36" stroke="rgba(0,0,0,0.15)" stroke-width="1" fill="none"/>
+          <circle cx="30" cy="38" r="4" fill="rgba(255,200,150,0.3)"/>
+        </svg>
+      </div>
+      <div class="animal-info">
+        <div class="animal-name">胖橘</div>
+        <div class="animal-species">锦鲤 · 池塘摸鱼王</div>
+        <p class="animal-desc">池塘里的搞笑担当，存在感全靠蹦跶。</p>
+        <div class="animal-quote" style="border-color: #FF6347;">"（蹦出水面甩了一脸水花）"</div>
+      </div>
+    </div>
+
+    <!-- Dog: Lang Gou Ge -->
+    <div class="animal-card" style="--card-accent: #8B6914;" data-delay="300">
+      <div class="animal-icon-wrap" style="background: linear-gradient(135deg, rgba(139,105,20,0.2), rgba(100,70,10,0.1));">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 20C10 20 6 10 12 8C18 6 20 14 20 14H44C44 14 46 6 52 8C58 10 54 20 54 20V40C54 48 46 54 38 54H26C18 54 10 48 10 40V20Z" fill="#8B6914"/>
+          <ellipse cx="24" cy="28" rx="3" ry="3.5" fill="#0A0A12"/>
+          <ellipse cx="40" cy="28" rx="3" ry="3.5" fill="#0A0A12"/>
+          <ellipse cx="24" cy="27" rx="1.2" ry="1.5" fill="#F5F0E8"/>
+          <ellipse cx="40" cy="27" rx="1.2" ry="1.5" fill="#F5F0E8"/>
+          <ellipse cx="32" cy="36" rx="5" ry="3.5" fill="#6B4F10"/>
+          <ellipse cx="32" cy="35" rx="2.5" ry="1.5" fill="#0A0A12"/>
+          <path d="M28 40Q32 44 36 40" stroke="#0A0A12" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M10 20L6 16" stroke="#8B6914" stroke-width="4" stroke-linecap="round"/>
+          <path d="M54 20L58 16" stroke="#8B6914" stroke-width="4" stroke-linecap="round"/>
+          <path d="M26 54L24 60" stroke="#8B6914" stroke-width="3" stroke-linecap="round"/>
+          <path d="M38 54L40 60" stroke="#8B6914" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="animal-info">
+        <div class="animal-name">狼狗哥</div>
+        <div class="animal-species">巨型狼犬 · 听竹轩保安</div>
+        <p class="animal-desc">体型巨大，忠心耿耿，听竹轩门面担当。</p>
+        <div class="animal-quote" style="border-color: #8B6914;">"（低沉地呜了一声，表示认同）"</div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ══════════════════ Antagonist Faction ══════════════════ -->
+<div class="antagonist-section-bg">
+<section class="section" id="antagonists" data-od-id="antagonists" data-component="antagonist-faction">
+  <div class="section-header fade-up">
+    <p class="section-sub">反派阵营</p>
+    <h2>暗流涌动</h2>
+    <div class="section-line" style="background: #8B0000;"></div>
+  </div>
+
+  <div class="card-grid" style="max-width: 900px; margin: 0 auto;">
+    <!-- Da Huang Zi -->
+    <div class="char-card antagonist-card" style="--card-accent: #8B0000;" data-delay="0">
+      <div class="card-avatar" style="background: linear-gradient(135deg, rgba(139,0,0,0.25), rgba(80,0,0,0.15));">
+        <span class="card-avatar-letter">霄</span>
+      </div>
+      <div class="card-name">大皇子宁万霄</div>
+      <div class="card-title" style="color: #8B0000;">外贤内狠的大皇兄</div>
+      <p class="card-desc">18岁，三年暗杀两位皇子一位公主。目前被囚禁但仍在谋划。</p>
+      <div class="card-quote">
+        <div class="quote-bubble" style="border-left-color: #8B0000; background: rgba(139,0,0,0.08);">"这盘棋，还没下完。"</div>
+      </div>
+    </div>
+
+    <!-- Shu Fei -->
+    <div class="char-card antagonist-card" style="--card-accent: #2F4F4F;" data-delay="100">
+      <div class="card-avatar" style="background: linear-gradient(135deg, rgba(47,79,79,0.3), rgba(30,50,50,0.15));">
+        <span class="card-avatar-letter">淑</span>
+      </div>
+      <div class="card-name">淑妃</div>
+      <div class="card-title" style="color: #5F8F8F;">北凉暗桩</div>
+      <p class="card-desc">大皇子的幕后支持者，北凉细作。身份暴露后被囚禁。</p>
+      <div class="card-quote">
+        <div class="quote-bubble" style="border-left-color: #2F4F4F; background: rgba(47,79,79,0.08);">"你以为...这就结束了？"</div>
+      </div>
+    </div>
+
+    <!-- Gui Ying -->
+    <div class="char-card antagonist-card" style="--card-accent: #708090;" data-delay="200">
+      <div class="card-avatar" style="background: linear-gradient(135deg, rgba(112,128,144,0.25), rgba(80,90,100,0.15));">
+        <span class="card-avatar-letter">鬼</span>
+      </div>
+      <div class="card-name">鬼影</div>
+      <div class="card-title" style="color: #708090;">小竹的师父</div>
+      <p class="card-desc">与大皇子决裂后加入婉儿阵营。粗犷寡言，口袋里揣着婉儿送的晾衣绳。</p>
+      <div class="card-quote">
+        <div class="quote-bubble" style="border-left-color: #708090; background: rgba(112,128,144,0.08);">"......（摸了摸口袋里的晾衣绳）"</div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ══════════════════ Relationship Map ══════════════════ -->
+<section class="section rel-section" id="relationships" data-od-id="relationships" data-component="relationship-map">
+  <div class="section-header fade-up">
+    <p class="section-sub">角色关系网</p>
+    <h2>人物关系</h2>
+    <div class="section-line" style="background: var(--seed-primary);"></div>
+  </div>
+
+  <div class="rel-container fade-up">
+    <div class="rel-svg-wrap">
+      <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+        <defs>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+          </filter>
+        </defs>
+
+        <!-- Connection lines -->
+        <!-- Wan'er -> Ning An (ally, cyan) -->
+        <line x1="250" y1="250" x2="130" y2="130" stroke="#00D4FF" stroke-width="2" opacity="0.5"/>
+        <text x="175" y="178" fill="#00D4FF" font-size="11" font-family="'Noto Sans SC', sans-serif" text-anchor="middle">盟友</text>
+
+        <!-- Wan'er -> Xiao Zhu (subordinate, purple) -->
+        <line x1="250" y1="250" x2="370" y2="130" stroke="#7E4FC9" stroke-width="2" opacity="0.5"/>
+        <text x="325" y="178" fill="#7E4FC9" font-size="11" font-family="'Noto Sans SC', sans-serif" text-anchor="middle">下属</text>
+
+        <!-- Wan'er -> Xiao Man (subordinate, pink) -->
+        <line x1="250" y1="250" x2="380" y2="320" stroke="#FF6B9D" stroke-width="1.5" opacity="0.4"/>
+        <text x="330" y="295" fill="#FF6B9D" font-size="11" font-family="'Noto Sans SC', sans-serif" text-anchor="middle">见习</text>
+
+        <!-- Wan'er -> Crown Prince (sibling, gold) -->
+        <line x1="250" y1="250" x2="120" y2="350" stroke="#FFD700" stroke-width="2" opacity="0.5"/>
+        <text x="170" y="310" fill="#FFD700" font-size="11" font-family="'Noto Sans SC', sans-serif" text-anchor="middle">兄妹</text>
+
+        <!-- Wan'er -> Da Huangzi (enemy, red dashed) -->
+        <line x1="250" y1="250" x2="380" y2="420" stroke="#E63946" stroke-width="2" stroke-dasharray="8 4" opacity="0.6"/>
+        <text x="330" y="350" fill="#E63946" font-size="11" font-family="'Noto Sans SC', sans-serif" text-anchor="middle">宿敌</text>
+
+        <!-- Da Huangzi -> Shu Fei (conspiracy, dark teal) -->
+        <line x1="380" y1="420" x2="250" y2="440" stroke="#2F4F4F" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.4"/>
+        <text x="320" y="442" fill="#5F8F8F" font-size="10" font-family="'Noto Sans SC', sans-serif" text-anchor="middle">幕后</text>
+
+        <!-- Xiao Zhu -> Gui Ying (master-student, slate) -->
+        <line x1="370" y1="130" x2="420" y2="220" stroke="#708090" stroke-width="1.5" opacity="0.4"/>
+        <text x="406" y="168" fill="#708090" font-size="10" font-family="'Noto Sans SC', sans-serif" text-anchor="middle">师徒</text>
+
+        <!-- Nodes -->
+        <!-- Center: Wan'er -->
+        <circle cx="250" cy="250" r="36" fill="rgba(255,215,0,0.12)" stroke="#FFD700" stroke-width="2" filter="url(#glow)"/>
+        <text x="250" y="246" fill="#FFD700" font-size="18" font-family="'Noto Serif SC', serif" font-weight="700" text-anchor="middle">婉</text>
+        <text x="250" y="266" fill="#B8A99A" font-size="9" font-family="'Noto Sans SC', sans-serif" text-anchor="middle">七公主</text>
+
+        <!-- Ning An -->
+        <circle cx="130" cy="130" r="28" fill="rgba(0,212,255,0.1)" stroke="#00D4FF" stroke-width="1.5"/>
+        <text x="130" y="126" fill="#00D4FF" font-size="16" font-family="'Noto Serif SC', serif" font-weight="600" text-anchor="middle">安</text>
+        <text x="130" y="144" fill="#B8A99A" font-size="9" font-family="'Noto Sans SC', sans-serif" text-anchor="middle">三公主</text>
+
+        <!-- Xiao Zhu -->
+        <circle cx="370" cy="130" r="28" fill="rgba(168,85,247,0.1)" stroke="#7E4FC9" stroke-width="1.5"/>
+        <text x="370" y="126" fill="#7E4FC9" font-size="16" font-family="'Noto Serif SC', serif" font-weight="600" text-anchor="middle">竹</text>
+        <text x="370" y="144" fill="#B8A99A" font-size="9" font-family="'Noto Sans SC', sans-serif" text-anchor="middle">小竹</text>
+
+        <!-- Xiao Man -->
+        <circle cx="380" cy="320" r="24" fill="rgba(255,107,157,0.1)" stroke="#FF6B9D" stroke-width="1.5"/>
+        <text x="380" y="317" fill="#FF6B9D" font-size="14" font-family="'Noto Serif SC', serif" font-weight="600" text-anchor="middle">满</text>
+        <text x="380" y="333" fill="#B8A99A" font-size="9" font-family="'Noto Sans SC', sans-serif" text-anchor="middle">小满</text>
+
+        <!-- Crown Prince -->
+        <circle cx="120" cy="350" r="28" fill="rgba(245,158,11,0.1)" stroke="#F59E0B" stroke-width="1.5"/>
+        <text x="120" y="346" fill="#F59E0B" font-size="16" font-family="'Noto Serif SC', serif" font-weight="600" text-anchor="middle">太</text>
+        <text x="120" y="364" fill="#B8A99A" font-size="9" font-family="'Noto Sans SC', sans-serif" text-anchor="middle">太子</text>
+
+        <!-- Da Huangzi -->
+        <circle cx="380" cy="420" r="30" fill="rgba(139,0,0,0.12)" stroke="#8B0000" stroke-width="2"/>
+        <text x="380" y="416" fill="#8B0000" font-size="16" font-family="'Noto Serif SC', serif" font-weight="600" text-anchor="middle">霄</text>
+        <text x="380" y="434" fill="#B8A99A" font-size="9" font-family="'Noto Sans SC', sans-serif" text-anchor="middle">大皇子</text>
+
+        <!-- Shu Fei -->
+        <circle cx="250" cy="440" r="24" fill="rgba(47,79,79,0.12)" stroke="#2F4F4F" stroke-width="1.5"/>
+        <text x="250" y="437" fill="#5F8F8F" font-size="14" font-family="'Noto Serif SC', serif" font-weight="600" text-anchor="middle">淑</text>
+        <text x="250" y="453" fill="#B8A99A" font-size="9" font-family="'Noto Sans SC', sans-serif" text-anchor="middle">淑妃</text>
+
+        <!-- Gui Ying -->
+        <circle cx="420" cy="220" r="22" fill="rgba(112,128,144,0.1)" stroke="#708090" stroke-width="1.5"/>
+        <text x="420" y="217" fill="#708090" font-size="14" font-family="'Noto Serif SC', serif" font-weight="600" text-anchor="middle">鬼</text>
+        <text x="420" y="233" fill="#B8A99A" font-size="9" font-family="'Noto Sans SC', sans-serif" text-anchor="middle">鬼影</text>
+      </svg>
+    </div>
+
+    <div class="rel-legend fade-up">
+      <div class="rel-legend-item">
+        <div class="rel-legend-line" style="background: #FFD700;"></div>
+        兄妹
+      </div>
+      <div class="rel-legend-item">
+        <div class="rel-legend-line" style="background: #00D4FF;"></div>
+        盟友
+      </div>
+      <div class="rel-legend-item">
+        <div class="rel-legend-line" style="background: #7E4FC9;"></div>
+        下属
+      </div>
+      <div class="rel-legend-item">
+        <div class="rel-legend-line" style="background: #E63946; border-top: 2px dashed #E63946; height: 0;"></div>
+        宿敌
+      </div>
+      <div class="rel-legend-item">
+        <div class="rel-legend-line" style="background: #708090;"></div>
+        师徒
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ Footer ══════════════════ -->
+<footer class="footer" data-od-id="footer" data-component="footer">
+  <div class="footer-brand">七公主的发疯日常</div>
+  <p class="footer-text">大启朝宫廷轻喜剧 · 穿越爽文连载</p>
+  <ul class="footer-links">
+    <li><a href="/">首页</a></li>
+    <li><a href="/read">章节目录</a></li>
+    <li><a href="#">角色介绍</a></li>
+  </ul>
+  <p class="footer-copy">本站为小说宣传页，所有角色均为虚构。</p>
+</footer>
+
+<script is:inline>
+(function() {
+  'use strict';
+
+  /* ── Floating Flower Particles ── */
+  var flowersContainer = document.getElementById('heroFlowers');
+  if (flowersContainer) {
+    var flowerSVG = '<svg width="12" height="12" viewBox="0 0 24 24"><circle cx="12" cy="6" r="4" fill="#FF4444" opacity="0.7"/><circle cx="6" cy="12" r="4" fill="#FF4444" opacity="0.7"/><circle cx="18" cy="12" r="4" fill="#FF4444" opacity="0.7"/><circle cx="9" cy="18" r="4" fill="#FF4444" opacity="0.7"/><circle cx="15" cy="18" r="4" fill="#FF4444" opacity="0.7"/><circle cx="12" cy="12" r="3" fill="#FFD700"/></svg>';
+    for (var i = 0; i < 12; i++) {
+      var el = document.createElement('div');
+      el.className = 'float-flower';
+      el.innerHTML = flowerSVG;
+      el.style.left = (Math.random() * 100) + '%';
+      el.style.animationDuration = (10 + Math.random() * 15) + 's';
+      el.style.animationDelay = (Math.random() * 12) + 's';
+      flowersContainer.appendChild(el);
+    }
+  }
+
+  /* ── IntersectionObserver for fade-up ── */
+  var fadeEls = document.querySelectorAll('.fade-up');
+  var cardEls = document.querySelectorAll('.char-card, .animal-card');
+
+  if ('IntersectionObserver' in window) {
+    var fadeObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    fadeEls.forEach(function(el) { fadeObserver.observe(el); });
+
+    var cardObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var delay = parseInt(entry.target.getAttribute('data-delay') || '0', 10);
+          setTimeout(function() {
+            entry.target.classList.add('visible');
+          }, delay);
+          cardObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+    cardEls.forEach(function(el) { cardObserver.observe(el); });
+  } else {
+    fadeEls.forEach(function(el) { el.classList.add('visible'); });
+    cardEls.forEach(function(el) { el.classList.add('visible'); });
+  }
+
+  /* ── Card Click to Expand Quote ── */
+  var charCards = document.querySelectorAll('.char-card');
+  charCards.forEach(function(card) {
+    card.addEventListener('click', function() {
+      var wasExpanded = card.classList.contains('expanded');
+      charCards.forEach(function(c) { c.classList.remove('expanded'); });
+      if (!wasExpanded) {
+        card.classList.add('expanded');
+      }
+    });
+  });
+
+  /* ── Mobile Nav Toggle ── */
+  var hamburger = document.getElementById('hamburgerBtn');
+  var mobileNav = document.getElementById('mobileNav');
+  var isOpen = false;
+
+  if (hamburger && mobileNav) {
+    hamburger.addEventListener('click', function() {
+      isOpen = !isOpen;
+      mobileNav.classList.toggle('open', isOpen);
+      var bars = hamburger.querySelectorAll('span');
+      if (isOpen) {
+        bars[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        bars[1].style.opacity = '0';
+        bars[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+      } else {
+        bars[0].style.transform = '';
+        bars[1].style.opacity = '';
+        bars[2].style.transform = '';
+      }
+    });
+  }
+
+  window.closeMobileNav = function() {
+    isOpen = false;
+    mobileNav.classList.remove('open');
+    var bars = hamburger.querySelectorAll('span');
+    bars[0].style.transform = '';
+    bars[1].style.opacity = '';
+    bars[2].style.transform = '';
+  };
+
+})();
+</script>

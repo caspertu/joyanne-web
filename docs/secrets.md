@@ -13,8 +13,8 @@
 
 | Variable | 仓库 | 示例值 |
 |----------|------|--------|
-| `JOYANNE_WEB_REPO` | ihavenoidea | `yourname/joyanne-web` |
-| `IHAVENOIDEA_REPO` | joyanne-web | `yourname/ihavenoidea` |
+| `JOYANNE_WEB_REPO` | ihavenoidea | `caspertu/joyanne-web` |
+| `IHAVENOIDEA_REPO` | joyanne-web | `caspertu/ihavenoidea` |
 
 ## Secrets
 
@@ -46,12 +46,12 @@
 # joyanne-web
 cd /Users/xing/dev/joyanne-web
 git commit -m "feat: MVP reading site with 10 chapters"
-git remote add origin git@github.com:YOURNAME/joyanne-web.git
+git remote add origin git@github.com:caspertu/joyanne-web.git
 git push -u origin main
 
 # ihavenoidea（含 notify workflow）
 cd /Users/xing/dev/ihavenoidea
-git remote add origin git@github.com:YOURNAME/ihavenoidea.git
+git remote add origin git@github.com:caspertu/ihavenoidea.git
 git add .github/workflows/notify-joyanne-web.yml
 git commit -m "ci: notify joyanne-web on chapter updates"
 git push -u origin main

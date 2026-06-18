@@ -33,7 +33,7 @@ jobs:
         run: |
           if [ -n "$IHAVENOIDEA_PAT" ]; then
             git clone --depth 1 --filter=blob:none --sparse \
-              "https://x-access-token:${IHAVENOIDEA_PAT}@github.com/${{ vars.IHAVENOIDEA_REPO || 'OWNER/ihavenoidea' }}.git" \
+              "https://x-access-token:${IHAVENOIDEA_PAT}@github.com/${{ vars.IHAVENOIDEA_REPO || 'caspertu/ihavenoidea' }}.git" \
               /tmp/ihavenoidea
             cd /tmp/ihavenoidea
             git sparse-checkout set chapters

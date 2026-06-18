@@ -41,17 +41,9 @@ jobs:
             cp -r src/content/chapters /tmp/ihavenoidea/chapters 2>/dev/null || true
           fi
 
-      - name: Sync content
-        run: |
-          if [ -d /tmp/ihavenoidea/chapters ]; then
-            node scripts/sync-chapters.mjs --source /tmp/ihavenoidea
-            node scripts/sync-downloads.mjs --source /tmp/ihavenoidea
-          else
-            echo "Skipping sync — no source chapters"
-            node scripts/sync-downloads.mjs --source /tmp/ihavenoidea 2>/dev/null || true
-          fi
-
       - name: Build
+        env:
+          IHAVENOIDEA_ROOT: /tmp/ihavenoidea
         run: npm run build
 
       - name: Deploy to Cloudflare Pages

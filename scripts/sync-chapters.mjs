@@ -14,7 +14,10 @@ const DEFAULT_SOURCE = path.resolve(ROOT, '../ihavenoidea');
 
 const args = process.argv.slice(2);
 const sourceIdx = args.indexOf('--source');
-const SOURCE = sourceIdx >= 0 ? path.resolve(args[sourceIdx + 1]) : DEFAULT_SOURCE;
+const SOURCE =
+  (sourceIdx >= 0 ? path.resolve(args[sourceIdx + 1]) : null) ??
+  (process.env.IHAVENOIDEA_ROOT ? path.resolve(process.env.IHAVENOIDEA_ROOT) : null) ??
+  DEFAULT_SOURCE;
 const CHAPTERS_DIR = path.join(SOURCE, 'chapters');
 const README_PATH = path.join(CHAPTERS_DIR, 'README.md');
 const OVERRIDES_PATH = path.join(ROOT, 'content-meta/overrides.json');

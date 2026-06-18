@@ -13,7 +13,10 @@ const OUT_DIR = path.join(ROOT, 'public/downloads');
 
 const args = process.argv.slice(2);
 const sourceIdx = args.indexOf('--source');
-const SOURCE = sourceIdx >= 0 ? path.resolve(args[sourceIdx + 1]) : DEFAULT_SOURCE;
+const SOURCE =
+  (sourceIdx >= 0 ? path.resolve(args[sourceIdx + 1]) : null) ??
+  (process.env.IHAVENOIDEA_ROOT ? path.resolve(process.env.IHAVENOIDEA_ROOT) : null) ??
+  DEFAULT_SOURCE;
 
 const ARTIFACTS = [
   { src: '全本.epub', dest: '七公主的发疯日常_全本.epub' },

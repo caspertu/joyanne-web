@@ -4,7 +4,7 @@ part: null
 title: "五公主的入职第一课，和母后那双笑着的眼睛"
 wordCount: 2739
 publishedAt: "2026-06-19T11:50:40+08:00"
-updatedAt: "2026-06-19T11:50:40+08:00"
+updatedAt: "2026-06-19T16:00:00+08:00"
 status: "published"
 volume: 1
 sourceFile: "chapter-10.md"

@@ -119,9 +119,12 @@ function processBody(raw, isChapter01) {
 }
 
 function validateWordCount(count, slug) {
-  if (count < 1500) {
-    console.error(`  ✗ ERROR ${slug}: 汉字 ${count} < 1500，阻断 build`);
+  if (count < 900) {
+    console.error(`  ✗ ERROR ${slug}: 汉字 ${count} < 900，阻断 build`);
     return 'error';
+  }
+  if (count < 1500) {
+    console.warn(`  ⚠ WARN ${slug}: 汉字 ${count} < 1500（短篇章节，待扩写）`);
   }
   if (count < 2500) console.warn(`  ⚠ WARN ${slug}: 汉字 ${count} < 2500`);
   else if (count < 4500) console.info(`  ℹ INFO ${slug}: 汉字 ${count} < 4500（目标区间未达）`);

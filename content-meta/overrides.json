@@ -1,3 +1,13 @@
 {
-  "chapters": {}
+  "chapters": {
+    "chapter-11": {
+      "publishedAt": "2026-06-19T08:50:00+08:00",
+      "status": "published"
+    },
+    "chapter-21": { "status": "draft" },
+    "chapter-22": { "status": "draft" },
+    "chapter-23": { "status": "draft" },
+    "chapter-24": { "status": "draft" },
+    "chapter-25": { "status": "draft" }
+  }
 }

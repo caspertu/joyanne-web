@@ -3,7 +3,7 @@ chapterNumber: 12
 part: null
 title: "父皇的问话，比茶还烫"
 wordCount: 1706
-publishedAt: "2026-06-19T00:43:44.441Z"
+publishedAt: "2026-06-19T08:43:57+08:00"
 status: "published"
 volume: 1
 sourceFile: "chapter-12.md"

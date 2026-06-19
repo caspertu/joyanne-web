@@ -3,7 +3,7 @@ chapterNumber: 18
 part: null
 title: "北边来的风，带着血"
 wordCount: 1127
-publishedAt: "2026-06-19T00:43:44.517Z"
+publishedAt: "2026-06-19T08:43:57+08:00"
 status: "published"
 volume: 1
 sourceFile: "chapter-18.md"

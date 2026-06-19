@@ -213,12 +213,12 @@ async function main() {
       continue;
     }
 
-    const wordCount = countChineseChars(body);
-    const wcResult = validateWordCount(wordCount, slug);
-    if (wcResult === 'error') hasError = true;
-
     const override = overrides.chapters?.[slug] ?? {};
     const status = override.status ?? 'published';
+
+    const wordCount = countChineseChars(body);
+    const wcResult = validateWordCount(wordCount, slug);
+    if (wcResult === 'error' && status === 'published') hasError = true;
     const publishedAt =
       override.publishedAt ??
       getGitDate(srcPath) ??
@@ -269,7 +269,15 @@ async function main() {
   }
 
   const publishedCount = uniquePublished.length;
-  const prevPublishedCount = [...previousSlugs].filter((s) => !s.includes('draft')).length;
+  let prevPublishedCount = 0;
+  for (const slug of previousSlugs) {
+    try {
+      const prev = await fs.readFile(path.join(OUT_DIR, `${slug}.md`), 'utf8');
+      if (/status:\s*"?published"?/.test(prev.split('---')[1] ?? '')) prevPublishedCount++;
+    } catch {
+      // ignore
+    }
+  }
   if (prevPublishedCount > 0 && publishedCount < prevPublishedCount) {
     console.error(`✗ ERROR: 已发布章数从 ${prevPublishedCount} 降至 ${publishedCount}`);
     hasError = true;

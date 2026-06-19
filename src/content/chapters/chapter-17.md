@@ -4,9 +4,11 @@ part: null
 title: "只看懂了一半"
 wordCount: 1119
 publishedAt: "2026-06-19T08:43:57+08:00"
+updatedAt: "2026-06-19T08:43:57+08:00"
 status: "published"
 volume: 1
 sourceFile: "chapter-17.md"
+sourceVariant: "chapters"
 ---
 
 晨。正房。

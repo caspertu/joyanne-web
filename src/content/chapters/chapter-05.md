@@ -3,10 +3,12 @@ chapterNumber: 5
 part: null
 title: "听竹轩夜战，本宫的招聘部要扩招了"
 wordCount: 2979
-publishedAt: "2026-06-18T12:34:50+08:00"
+publishedAt: "2026-06-19T11:50:40+08:00"
+updatedAt: "2026-06-19T11:50:40+08:00"
 status: "published"
 volume: 1
 sourceFile: "chapter-05.md"
+sourceVariant: "chapter_v2"
 ---
 
 林婉儿仰头盯着房梁。

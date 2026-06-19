@@ -39,6 +39,19 @@ export function formatChapterLabel(chapter: ChapterEntry): string {
   return `第${n}章${partLabel} ${chapter.data.title}`;
 }
 
+export function formatUpdatedDate(date: Date): string {
+  const parts = new Intl.DateTimeFormat('zh-CN', {
+    timeZone: 'Asia/Shanghai',
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+  }).formatToParts(date);
+  const year = parts.find((p) => p.type === 'year')?.value;
+  const month = parts.find((p) => p.type === 'month')?.value;
+  const day = parts.find((p) => p.type === 'day')?.value;
+  return `更新于 ${year}年${month}月${day}日`;
+}
+
 export function groupChaptersByNumber(
   chapters: ChapterEntry[],
 ): Map<number, ChapterEntry[]> {

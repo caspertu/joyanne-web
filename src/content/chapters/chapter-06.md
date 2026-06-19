@@ -3,10 +3,12 @@ chapterNumber: 6
 part: null
 title: "姐姐去金銮殿开庭，妹妹去地牢挖人"
 wordCount: 2628
-publishedAt: "2026-06-18T15:53:31+08:00"
+publishedAt: "2026-06-19T11:50:40+08:00"
+updatedAt: "2026-06-19T11:50:40+08:00"
 status: "published"
 volume: 1
 sourceFile: "chapter-06.md"
+sourceVariant: "chapter_v2"
 ---
 
 天还没亮，听竹轩的灯就亮了。

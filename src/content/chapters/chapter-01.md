@@ -3,10 +3,12 @@ chapterNumber: 1
 part: null
 title: "七星法阵把我卷进了皇宫"
 wordCount: 1870
-publishedAt: "2026-06-18T12:34:50+08:00"
+publishedAt: "2026-06-19T11:50:40+08:00"
+updatedAt: "2026-06-19T11:50:40+08:00"
 status: "published"
 volume: 1
 sourceFile: "chapter-01.md"
+sourceVariant: "chapter_v2"
 ---
 
 晚上九点，整栋写字楼只剩二十七楼一盏灯还亮着。

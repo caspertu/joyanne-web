@@ -3,10 +3,12 @@ chapterNumber: 4
 part: null
 title: "望月阁的鸿门宴，咱有三个奥斯卡影后"
 wordCount: 2856
-publishedAt: "2026-06-18T12:34:50+08:00"
+publishedAt: "2026-06-19T11:50:40+08:00"
+updatedAt: "2026-06-19T11:50:40+08:00"
 status: "published"
 volume: 1
 sourceFile: "chapter-04.md"
+sourceVariant: "chapter_v2"
 ---
 
 赴宴前一晚，听竹轩灯火通明。

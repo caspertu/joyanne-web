@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * sync-chapters.mjs — 从 ihavenoidea 解析章节 MD，注入 frontmatter 写入 content collection。
- * 用法: node scripts/sync-chapters.mjs [--source /path/to/ihavenoidea]
+ * 用法: node scripts/sync-chapters.mjs [--source /path/to/ihavenoidea] [--variant chapter_v2]
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -14,11 +14,16 @@ const DEFAULT_SOURCE = path.resolve(ROOT, '../ihavenoidea');
 
 const args = process.argv.slice(2);
 const sourceIdx = args.indexOf('--source');
+const variantIdx = args.indexOf('--variant');
 const SOURCE =
   (sourceIdx >= 0 ? path.resolve(args[sourceIdx + 1]) : null) ??
   (process.env.IHAVENOIDEA_ROOT ? path.resolve(process.env.IHAVENOIDEA_ROOT) : null) ??
   DEFAULT_SOURCE;
+const VARIANT =
+  (variantIdx >= 0 ? args[variantIdx + 1] : null) ?? process.env.CHAPTERS_VARIANT ?? null;
 const CHAPTERS_DIR = path.join(SOURCE, 'chapters');
+const CHAPTER_V2_DIR = path.join(SOURCE, 'chapter_v2');
+const USE_V2_MERGE = VARIANT === 'chapter_v2';
 const README_PATH = path.join(CHAPTERS_DIR, 'README.md');
 const OVERRIDES_PATH = path.join(ROOT, 'content-meta/overrides.json');
 const OUT_DIR = path.join(ROOT, 'src/content/chapters');
@@ -155,8 +160,22 @@ function compareSlug(a, b) {
   return sa.localeCompare(sb);
 }
 
+async function resolveSourcePath(file) {
+  const v1Path = path.join(CHAPTERS_DIR, file);
+  if (!USE_V2_MERGE) return { srcPath: v1Path, sourceVariant: 'chapters' };
+
+  const v2Path = path.join(CHAPTER_V2_DIR, file);
+  try {
+    await fs.access(v2Path);
+    return { srcPath: v2Path, sourceVariant: 'chapter_v2' };
+  } catch {
+    return { srcPath: v1Path, sourceVariant: 'chapters' };
+  }
+}
+
 async function main() {
-  console.log(`📚 sync-chapters: ${CHAPTERS_DIR} → ${OUT_DIR}`);
+  const variantLabel = USE_V2_MERGE ? 'chapter_v2 合并 → chapters/' : 'chapters/';
+  console.log(`📚 sync-chapters: ${variantLabel} ${CHAPTERS_DIR} → ${OUT_DIR}`);
 
   const overrides = await loadOverrides();
   const readmeTitles = await loadReadmeTitles();
@@ -200,7 +219,7 @@ async function main() {
     const slug = `chapter-${m[1]}${part ?? ''}`;
     newSlugs.add(slug);
 
-    const srcPath = path.join(CHAPTERS_DIR, file);
+    const { srcPath, sourceVariant } = await resolveSourcePath(file);
     const raw = await fs.readFile(srcPath, 'utf8');
     const isChapter01 = file === 'chapter-01.md';
 
@@ -223,6 +242,10 @@ async function main() {
       override.publishedAt ??
       getGitDate(srcPath) ??
       new Date().toISOString();
+    const updatedAt =
+      override.updatedAt ??
+      getGitDate(srcPath) ??
+      publishedAt;
 
     const readme = readmeTitles.get(slug);
     if (readme && readme.title !== title) {
@@ -237,14 +260,17 @@ async function main() {
       title,
       wordCount,
       publishedAt,
+      updatedAt,
       status,
       volume: 1,
       sourceFile: file,
+      sourceVariant,
     });
 
     const outPath = path.join(OUT_DIR, `${slug}.md`);
     await fs.writeFile(outPath, `${frontmatter}\n\n${body}\n`, 'utf8');
-    console.log(`  ✓ ${slug} — ${title} (${wordCount} 字)`);
+    const variantTag = sourceVariant === 'chapter_v2' ? ' [v2]' : '';
+    console.log(`  ✓ ${slug} — ${title} (${wordCount} 字)${variantTag}`);
 
     if (status === 'published') published.push(num);
   }

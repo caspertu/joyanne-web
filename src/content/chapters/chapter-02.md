@@ -3,10 +3,12 @@ chapterNumber: 2
 part: null
 title: "三姐姐，您这辣条多少钱一包"
 wordCount: 2763
-publishedAt: "2026-06-18T12:34:50+08:00"
+publishedAt: "2026-06-19T11:50:40+08:00"
+updatedAt: "2026-06-19T11:50:40+08:00"
 status: "published"
 volume: 1
 sourceFile: "chapter-02.md"
+sourceVariant: "chapter_v2"
 ---
 
 林婉儿深吸一口气：「姐姐请进！」

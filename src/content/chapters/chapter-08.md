@@ -3,10 +3,12 @@ chapterNumber: 8
 part: null
 title: "围猎场上，本宫请你吃一记瞬移"
 wordCount: 4112
-publishedAt: "2026-06-18T12:34:50+08:00"
+publishedAt: "2026-06-19T11:50:40+08:00"
+updatedAt: "2026-06-19T11:50:40+08:00"
 status: "published"
 volume: 1
 sourceFile: "chapter-08.md"
+sourceVariant: "chapter_v2"
 ---
 
 天还没亮，听竹轩门口的灯笼在风里晃。

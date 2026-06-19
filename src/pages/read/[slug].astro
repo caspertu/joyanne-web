@@ -5,6 +5,7 @@ import {
   getPublishedChapters,
   getNavSlugs,
   formatChapterLabel,
+  formatUpdatedDate,
   chapterSlug,
 } from '../../lib/chapters';
 
@@ -24,6 +25,7 @@ const chapters = await getPublishedChapters();
 const slug = chapterSlug(entry);
 const { prevSlug, nextSlug } = getNavSlugs(chapters, slug);
 const chapterLabel = formatChapterLabel(entry);
+const updatedLabel = formatUpdatedDate(entry.data.updatedAt);
 
 const bodyText = entry.body
   .replace(/---/g, '')
@@ -35,6 +37,7 @@ const description = bodyText.slice(0, 120);
 <ReaderLayout
   title={chapterLabel}
   chapterLabel={chapterLabel}
+  updatedLabel={updatedLabel}
   slug={slug}
   prevSlug={prevSlug}
   nextSlug={nextSlug}

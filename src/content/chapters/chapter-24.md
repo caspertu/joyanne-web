@@ -3,10 +3,12 @@ chapterNumber: 24
 part: null
 title: "生日蜡烛还没点亮"
 wordCount: 1491
-publishedAt: "2026-06-19T03:34:54.236Z"
+publishedAt: "2026-06-19T03:50:52.792Z"
+updatedAt: "2026-06-19T03:50:52.792Z"
 status: "draft"
 volume: 1
 sourceFile: "chapter-24.md"
+sourceVariant: "chapters"
 ---
 
 午前。听竹轩。

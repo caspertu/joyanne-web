@@ -3,10 +3,12 @@ chapterNumber: 23
 part: null
 title: "这一次救她的，不是系统"
 wordCount: 1361
-publishedAt: "2026-06-19T03:34:54.223Z"
+publishedAt: "2026-06-19T03:50:52.769Z"
+updatedAt: "2026-06-19T03:50:52.769Z"
 status: "draft"
 volume: 1
 sourceFile: "chapter-23.md"
+sourceVariant: "chapters"
 ---
 
 凌晨。听竹轩。

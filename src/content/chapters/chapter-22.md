@@ -3,10 +3,12 @@ chapterNumber: 22
 part: null
 title: "同盟不交底，是替对方守底"
 wordCount: 871
-publishedAt: "2026-06-19T03:34:54.210Z"
+publishedAt: "2026-06-19T03:50:52.746Z"
+updatedAt: "2026-06-19T03:50:52.746Z"
 status: "draft"
 volume: 1
 sourceFile: "chapter-22.md"
+sourceVariant: "chapters"
 ---
 
 夜。听竹轩。

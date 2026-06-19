@@ -3,10 +3,12 @@ chapterNumber: 25
 part: null
 title: "关上门是家，打开门是战场"
 wordCount: 1282
-publishedAt: "2026-06-19T03:34:54.249Z"
+publishedAt: "2026-06-19T03:50:52.814Z"
+updatedAt: "2026-06-19T03:50:52.814Z"
 status: "draft"
 volume: 1
 sourceFile: "chapter-25.md"
+sourceVariant: "chapters"
 ---
 
 晨。听竹轩。

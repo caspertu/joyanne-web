@@ -8,9 +8,11 @@ const chapters = defineCollection({
     title: z.string(),
     wordCount: z.number().int(),
     publishedAt: z.coerce.date(),
+    updatedAt: z.coerce.date(),
     status: z.enum(['published', 'draft']).default('published'),
     volume: z.number().int().default(1),
     sourceFile: z.string(),
+    sourceVariant: z.enum(['chapters', 'chapter_v2']).default('chapters'),
   }),
 });
 

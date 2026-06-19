@@ -4,9 +4,11 @@ part: null
 title: "她能打开别人的梦，但没把人当锁"
 wordCount: 935
 publishedAt: "2026-06-19T08:43:57+08:00"
+updatedAt: "2026-06-19T08:43:57+08:00"
 status: "published"
 volume: 1
 sourceFile: "chapter-19.md"
+sourceVariant: "chapters"
 ---
 
 晨。正房。

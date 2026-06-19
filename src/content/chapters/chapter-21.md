@@ -3,10 +3,12 @@ chapterNumber: 21
 part: null
 title: "她终于没有回头"
 wordCount: 1165
-publishedAt: "2026-06-19T03:34:54.197Z"
+publishedAt: "2026-06-19T03:50:52.723Z"
+updatedAt: "2026-06-19T03:50:52.723Z"
 status: "draft"
 volume: 1
 sourceFile: "chapter-21.md"
+sourceVariant: "chapters"
 ---
 
 晨。听竹轩。正房。

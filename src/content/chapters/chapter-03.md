@@ -3,10 +3,12 @@ chapterNumber: 3
 part: null
 title: "夜枭叔叔，欢迎加入听竹轩幼儿园"
 wordCount: 2721
-publishedAt: "2026-06-18T12:34:50+08:00"
+publishedAt: "2026-06-19T11:50:40+08:00"
+updatedAt: "2026-06-19T11:50:40+08:00"
 status: "published"
 volume: 1
 sourceFile: "chapter-03.md"
+sourceVariant: "chapter_v2"
 ---
 
 林婉儿说请吃晚饭，不是客气话。

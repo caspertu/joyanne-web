@@ -4,9 +4,11 @@ part: null
 title: "太子的门缝，他没有推"
 wordCount: 998
 publishedAt: "2026-06-19T08:43:57+08:00"
+updatedAt: "2026-06-19T08:43:57+08:00"
 status: "published"
 volume: 1
 sourceFile: "chapter-13.md"
+sourceVariant: "chapters"
 ---
 
 晨。听竹轩院子。

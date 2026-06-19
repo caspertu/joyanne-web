@@ -3,10 +3,12 @@ chapterNumber: 7
 part: null
 title: "金銮殿大审判，本宫带个证人来旁听"
 wordCount: 2826
-publishedAt: "2026-06-18T12:34:50+08:00"
+publishedAt: "2026-06-19T11:50:40+08:00"
+updatedAt: "2026-06-19T11:50:40+08:00"
 status: "published"
 volume: 1
 sourceFile: "chapter-07.md"
+sourceVariant: "chapter_v2"
 ---
 
 第二天清晨，听竹轩。

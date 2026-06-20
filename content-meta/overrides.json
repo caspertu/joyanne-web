@@ -24,11 +24,13 @@
       "status": "published"
     },
     "chapter-14": {
-      "updatedAt": "2026-06-19T18:00:00+08:00",
+      "publishedAt": "2026-06-20T16:00:00+08:00",
+      "updatedAt": "2026-06-20T16:00:00+08:00",
       "status": "published"
     },
     "chapter-15": {
-      "updatedAt": "2026-06-19T20:00:00+08:00",
+      "publishedAt": "2026-06-20T16:00:00+08:00",
+      "updatedAt": "2026-06-20T16:00:00+08:00",
       "status": "published"
     },
     "chapter-21": { "status": "draft" },

@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
-const DEFAULT_SOURCE = path.resolve(ROOT, '../ihavenoidea');
+const DEFAULT_SOURCE = path.resolve(ROOT, '../100tasks');
 
 const args = process.argv.slice(2);
 const sourceIdx = args.indexOf('--source');

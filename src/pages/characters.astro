@@ -1,8 +1,64 @@
 ---
-import CharactersLayout from '../layouts/CharactersLayout.astro';
-import CharactersContent from '../components/CharactersContent.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../../content-meta/site.json';
+
+const cast = [
+  {
+    emoji: '🎒',
+    name: '林小满',
+    role: '主角',
+    blurb: '14 岁初二学生，末日当天独自留在物理实验室。外表腼腆，内心倔强，擅长拆解改装小机械，用课本知识在丧尸校园里活下去。',
+  },
+  {
+    emoji: '🌿',
+    name: '苏晚晴',
+    role: '女主',
+    blurb: '班长兼生物课代表，林小满的暗恋对象。自带安全水源，冷静有判断，在清单上悄悄加了「第 101 条」。',
+  },
+  {
+    emoji: '🪖',
+    name: '老周',
+    role: '导师',
+    blurb: '52 岁退伍军人，学校附近邻居。第三章登场，以「砸盆引狼」的代价加入队伍，成为早期武力支柱。',
+  },
+  {
+    emoji: '🏃',
+    name: '陈果',
+    role: '队友',
+    blurb: '体育特长生，脚伤后仍跟着队伍行动。食堂清单任务里第一个落泪的人。',
+  },
+  {
+    emoji: '📐',
+    name: '方圆',
+    role: '队友',
+    blurb: '数学课代表，冷静观察型。擅长记录和推演，是队伍里的「记账员」。',
+  },
+];
 ---
 
-<CharactersLayout>
-  <CharactersContent />
-</CharactersLayout>
+<BaseLayout title="角色一览" description={`${site.title} — 主要角色`} path="/characters">
+  <div class="mx-auto max-w-2xl px-4 py-10">
+    <header class="mb-8">
+      <a href="/book" class="text-sm text-accent hover:underline">← 书籍介绍</a>
+      <h1 class="mt-4 font-serif text-2xl font-bold">角色一览</h1>
+      <p class="mt-2 text-sm text-ink/50">《{site.title}》主要人物</p>
+    </header>
+
+    <div class="space-y-4">
+      {
+        cast.map((c) => (
+          <article class="rounded-xl border border-accent-light p-5">
+            <div class="mb-2 flex items-center gap-3">
+              <span class="text-2xl" aria-hidden="true">{c.emoji}</span>
+              <div>
+                <h2 class="font-serif text-lg font-bold">{c.name}</h2>
+                <p class="text-xs text-accent">{c.role}</p>
+              </div>
+            </div>
+            <p class="text-sm leading-relaxed text-ink/75">{c.blurb}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>

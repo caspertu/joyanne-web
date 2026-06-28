@@ -11,9 +11,9 @@
     "build:ci": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "sync:chapters": "node scripts/sync-chapters.mjs --source ../100tasks",
+    "sync:chapters": "node scripts/sync-chapters.mjs --source ../ihavenoidea",
     "sync:downloads": "node scripts/sync-downloads.mjs",
-    "prebuild": "node scripts/sync-chapters.mjs --source ../100tasks"
+    "prebuild": "node scripts/sync-chapters.mjs --source ../ihavenoidea"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.6.0",

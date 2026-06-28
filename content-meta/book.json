@@ -1,15 +1,15 @@
 {
   "author": "爸爸",
   "language": "zh",
-  "chapters_dir": "../100tasks/chapters",
+  "chapters_dir": "../ihavenoidea/chapters",
   "books": [
     {
       "name": "v1",
-      "title": "末日霸主",
-      "subtitle": "第一季",
-      "chapters": { "from": 1, "to": 25 },
+      "title": "七公主的发疯日常",
+      "subtitle": "第一卷",
+      "chapters": { "from": 1, "to": 17 },
       "synopsis_file": "content-meta/synopsis.md",
-      "out_stem": "末日霸主_全本"
+      "out_stem": "七公主的发疯日常_全本"
     }
   ]
 }

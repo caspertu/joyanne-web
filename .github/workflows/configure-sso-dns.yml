@@ -43,7 +43,7 @@ jobs:
             -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
             -H "X-Auth-Key: ${CLOUDFLARE_API_KEY}" \
             -H "Content-Type: application/json" \
-            --data '{"value":"full"}' | jq -e '.success'
+            --data '{"value":"strict"}' | jq -e '.success'
 
           curl -fsS -X PATCH "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/settings/always_use_https" \
             -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \

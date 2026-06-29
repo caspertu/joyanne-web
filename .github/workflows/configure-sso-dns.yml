@@ -24,7 +24,7 @@ jobs:
             -H "X-Auth-Key: ${CLOUDFLARE_API_KEY}" \
             -H "Content-Type: application/json" | jq -r '.result[0].id // empty')
 
-          PAYLOAD='{"type":"A","name":"sso","content":"121.41.131.87","ttl":1,"proxied":true}'
+          PAYLOAD='{"type":"A","name":"sso","content":"121.41.131.87","ttl":1,"proxied":false}'
           if [ -n "${RECORD_ID}" ]; then
             curl -fsS -X PUT "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/dns_records/${RECORD_ID}" \
               -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
@@ -43,12 +43,6 @@ jobs:
             -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
             -H "X-Auth-Key: ${CLOUDFLARE_API_KEY}" \
             -H "Content-Type: application/json" \
-            --data '{"value":"flexible"}' | jq -e '.success'
+            --data '{"value":"full"}' | jq -e '.success'
 
-          curl -fsS -X PATCH "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/settings/always_use_https" \
-            -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
-            -H "X-Auth-Key: ${CLOUDFLARE_API_KEY}" \
-            -H "Content-Type: application/json" \
-            --data '{"value":"on"}' | jq -e '.success'
-
-          echo "sso.joyanna.online -> 121.41.131.87 (proxied) configured"
+          echo "sso.joyanna.online -> 121.41.131.87 (DNS only) configured"

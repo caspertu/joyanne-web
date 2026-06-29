@@ -1,0 +1,54 @@
+name: Configure SSO DNS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  configure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upsert sso.joyanna.online DNS and SSL settings
+        env:
+          CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_API_KEY }}
+          CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
+        run: |
+          set -euo pipefail
+          ZONE_ID=$(curl -fsS -X GET "https://api.cloudflare.com/client/v4/zones?name=joyanna.online" \
+            -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
+            -H "X-Auth-Key: ${CLOUDFLARE_API_KEY}" \
+            -H "Content-Type: application/json" | jq -r '.result[0].id')
+          test -n "${ZONE_ID}" && test "${ZONE_ID}" != "null"
+
+          RECORD_ID=$(curl -fsS -X GET "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/dns_records?type=A&name=sso.joyanna.online" \
+            -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
+            -H "X-Auth-Key: ${CLOUDFLARE_API_KEY}" \
+            -H "Content-Type: application/json" | jq -r '.result[0].id // empty')
+
+          PAYLOAD='{"type":"A","name":"sso","content":"121.41.131.87","ttl":1,"proxied":true}'
+          if [ -n "${RECORD_ID}" ]; then
+            curl -fsS -X PUT "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/dns_records/${RECORD_ID}" \
+              -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
+              -H "X-Auth-Key: ${CLOUDFLARE_API_KEY}" \
+              -H "Content-Type: application/json" \
+              --data "${PAYLOAD}" | jq -e '.success'
+          else
+            curl -fsS -X POST "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/dns_records" \
+              -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
+              -H "X-Auth-Key: ${CLOUDFLARE_API_KEY}" \
+              -H "Content-Type: application/json" \
+              --data "${PAYLOAD}" | jq -e '.success'
+          fi
+
+          curl -fsS -X PATCH "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/settings/ssl" \
+            -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
+            -H "X-Auth-Key: ${CLOUDFLARE_API_KEY}" \
+            -H "Content-Type: application/json" \
+            --data '{"value":"full"}' | jq -e '.success'
+
+          curl -fsS -X PATCH "https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/settings/always_use_https" \
+            -H "X-Auth-Email: ${CLOUDFLARE_EMAIL}" \
+            -H "X-Auth-Key: ${CLOUDFLARE_API_KEY}" \
+            -H "Content-Type: application/json" \
+            --data '{"value":"on"}' | jq -e '.success'
+
+          echo "sso.joyanna.online -> 121.41.131.87 (proxied) configured"

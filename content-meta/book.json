@@ -1,13 +1,13 @@
 {
   "author": "爸爸",
   "language": "zh",
-  "chapters_dir": "../ihavenoidea/chapters",
+  "chapters_dir": "../opus-rewrite/rewrites/opus",
   "books": [
     {
       "name": "v1",
       "title": "七公主的发疯日常",
       "subtitle": "第一卷",
-      "chapters": { "from": 1, "to": 17 },
+      "chapters": { "from": 1, "to": 24 },
       "synopsis_file": "content-meta/synopsis.md",
       "out_stem": "七公主的发疯日常_全本"
     }

@@ -12,7 +12,7 @@ const chapters = defineCollection({
     status: z.enum(['published', 'draft']).default('published'),
     volume: z.number().int().default(1),
     sourceFile: z.string(),
-    sourceVariant: z.enum(['chapters', 'chapter_v2']).default('chapters'),
+    sourceVariant: z.enum(['chapters', 'chapter_v2', 'opus']).default('chapters'),
   }),
 });
 

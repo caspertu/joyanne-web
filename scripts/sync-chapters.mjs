@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * sync-chapters.mjs — 从 ihavenoidea 解析章节 MD，注入 frontmatter 写入 content collection。
- * 用法: node scripts/sync-chapters.mjs [--source /path/to/ihavenoidea] [--variant chapter_v2]
+ * sync-chapters.mjs — 解析章节 MD，注入 frontmatter 写入 content collection。
+ * 用法: node scripts/sync-chapters.mjs [--source /path/to/repo] [--variant chapter_v2] [--layout opus]
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -15,20 +15,25 @@ const DEFAULT_SOURCE = path.resolve(ROOT, '../ihavenoidea');
 const args = process.argv.slice(2);
 const sourceIdx = args.indexOf('--source');
 const variantIdx = args.indexOf('--variant');
+const layoutIdx = args.indexOf('--layout');
 const SOURCE =
   (sourceIdx >= 0 ? path.resolve(args[sourceIdx + 1]) : null) ??
   (process.env.IHAVENOIDEA_ROOT ? path.resolve(process.env.IHAVENOIDEA_ROOT) : null) ??
   DEFAULT_SOURCE;
 const VARIANT =
   (variantIdx >= 0 ? args[variantIdx + 1] : null) ?? process.env.CHAPTERS_VARIANT ?? null;
-const CHAPTERS_DIR = path.join(SOURCE, 'chapters');
+const LAYOUT =
+  (layoutIdx >= 0 ? args[layoutIdx + 1] : null) ?? process.env.CHAPTERS_LAYOUT ?? 'chapters';
+const USE_OPUS = LAYOUT === 'opus';
+const CHAPTERS_DIR = USE_OPUS ? path.join(SOURCE, 'rewrites/opus') : path.join(SOURCE, 'chapters');
 const CHAPTER_V2_DIR = path.join(SOURCE, 'chapter_v2');
-const USE_V2_MERGE = VARIANT === 'chapter_v2';
+const USE_V2_MERGE = !USE_OPUS && VARIANT === 'chapter_v2';
 const README_PATH = path.join(CHAPTERS_DIR, 'README.md');
+const FILE_RE = USE_OPUS ? /^ch(\d{2})-opus-rewrite\.md$/ : /^chapter-(\d{2})([ab])?\.md$/;
+const OPUS_TITLE_RE = /^第([一二三四五六七八九十百零\d]+)章\s+(.+)$/;
 const OVERRIDES_PATH = path.join(ROOT, 'content-meta/overrides.json');
 const OUT_DIR = path.join(ROOT, 'src/content/chapters');
 
-const FILE_RE = /^chapter-(\d{2})([ab])?\.md$/;
 const H2_RE = /^##\s*第([一二三四五六七八九十百零\d]+)章\s+(.+)$/m;
 const END_RE = /——\s*第.+章\s*完\s*——/;
 const CN_DIGITS = { 零: 0, 一: 1, 二: 2, 三: 3, 四: 4, 五: 5, 六: 6, 七: 7, 八: 8, 九: 9 };
@@ -123,6 +128,20 @@ function processBody(raw, isChapter01) {
   return { title, body };
 }
 
+function processOpusBody(raw) {
+  const lines = raw.split('\n');
+  const first = (lines[0] ?? '').trim();
+  const titleMatch = first.match(OPUS_TITLE_RE);
+  if (!titleMatch) throw new Error('缺少首行「第N章 标题」');
+
+  const title = titleMatch[2].trim();
+  const body = lines.slice(1).join('\n').trim();
+  if (!END_RE.test(body)) {
+    console.warn('  ⚠ 缺少结尾标记「—— 第N章 完 ——」');
+  }
+  return { title, body };
+}
+
 function validateWordCount(count, slug) {
   if (count < 900) {
     console.error(`  ✗ ERROR ${slug}: 汉字 ${count} < 900，阻断 build`);
@@ -162,6 +181,7 @@ function compareSlug(a, b) {
 
 async function resolveSourcePath(file) {
   const v1Path = path.join(CHAPTERS_DIR, file);
+  if (USE_OPUS) return { srcPath: v1Path, sourceVariant: 'opus' };
   if (!USE_V2_MERGE) return { srcPath: v1Path, sourceVariant: 'chapters' };
 
   const v2Path = path.join(CHAPTER_V2_DIR, file);
@@ -174,7 +194,11 @@ async function resolveSourcePath(file) {
 }
 
 async function main() {
-  const variantLabel = USE_V2_MERGE ? 'chapter_v2 合并 → chapters/' : 'chapters/';
+  const variantLabel = USE_OPUS
+    ? 'opus rewrites/opus/'
+    : USE_V2_MERGE
+      ? 'chapter_v2 合并 → chapters/'
+      : 'chapters/';
   console.log(`📚 sync-chapters: ${variantLabel} ${CHAPTERS_DIR} → ${OUT_DIR}`);
 
   const overrides = await loadOverrides();
@@ -225,7 +249,7 @@ async function main() {
 
     let title, body;
     try {
-      ({ title, body } = processBody(raw, isChapter01));
+      ({ title, body } = USE_OPUS ? processOpusBody(raw) : processBody(raw, isChapter01));
     } catch (err) {
       console.error(`✗ ${file}: ${err.message}`);
       hasError = true;
@@ -269,7 +293,8 @@ async function main() {
 
     const outPath = path.join(OUT_DIR, `${slug}.md`);
     await fs.writeFile(outPath, `${frontmatter}\n\n${body}\n`, 'utf8');
-    const variantTag = sourceVariant === 'chapter_v2' ? ' [v2]' : '';
+    const variantTag =
+      sourceVariant === 'chapter_v2' ? ' [v2]' : sourceVariant === 'opus' ? ' [opus]' : '';
     console.log(`  ✓ ${slug} — ${title} (${wordCount} 字)${variantTag}`);
 
     if (status === 'published') published.push(num);
